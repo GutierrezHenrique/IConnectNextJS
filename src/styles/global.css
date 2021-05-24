@@ -1,0 +1,26 @@
+  
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+:root {
+    --white:#fff;
+    --background:rgb(245, 246, 250);
+    --gray-line: #DCDDE0;
+    --text: #666666;
+    --colorDefaultBox: rgb(140, 145, 165);
+    --highlight: #1a70c0d7;
+    --title: #2E384D;
+    --red: #E83F5B;
+    --green: #4CD62B;
+    --blue: #5965E0;
+    --blue-dark: #4953B8;
+    --blue-twitter: #2AA9E0;
+    --black: #000;
+}  
+
+body {
+    background: var(--background);
+}
