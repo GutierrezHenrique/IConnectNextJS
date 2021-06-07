@@ -10,31 +10,28 @@ import {BiSmile} from 'react-icons/bi'
 export default function CamComponents() {
     
     const [labelAnnotations, useLabelAnotation] = useState([])
-
+    const [img, setImg] = useState("https://media4.giphy.com/media/3oEjI6SIIHBdRxXI40/200.gif")
+    const [speedUpdate, setSpeedUpdate] = useState(10000)
 
     useEffect(() => {
-        axios.post('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyCPHrINBLeoqcF0RxE0z2r4CwWcJqYk_2A', {
-            requests: {
-                image: {
-                    source: {
-                        imageUri: "https://images03.brasildefato.com.br/23bed61977684f73ef6bd2c0f0c92d4c.jpeg"
-                    }
-                },
-                features: [{
-                    type: "LABEL_DETECTION",
-                    maxResults: 10
-                }]
-            },
+        apiMain.get('/viewimg')
+        .then(response => {
+
+            if (speedUpdate === 1000000000) {
+
+            } else {
+                setTimeout(() => {
+                    setImg(response.data.imgFormat)
+                    useLabelAnotation(response.data.imgList.responses[0].labelAnnotations)
+                }, speedUpdate)
+            }
+
         })
-            .then(response => {
-                useLabelAnotation(response.data.responses[0].labelAnnotations)
-                console.log(response.data)
-            })
-    }, [])
+    }, [labelAnnotations])
 
     return (
         <div className={styles.container}>
-            <img src="https://images03.brasildefato.com.br/23bed61977684f73ef6bd2c0f0c92d4c.jpeg" alt="" />
+            <img src={img} alt=""  height="400" />
 
             <div className={styles.list}>
 

@@ -52,7 +52,7 @@ const classes = useStyles();
 
   useEffect(() => {
 
-    apiWeather.get('/weather?q=Pindamonhangaba,br&lang=pt&appid=5b95f19a8652dbd46e3074e4618d9788')
+    apiMain.get('/weather')
       .then(response => {
         weatherformat = response.data.main.temp;
         setWeather(weatherformat - 273.15)
@@ -103,7 +103,7 @@ const classes = useStyles();
           <div> <Link href="/industry/machines">Maquinas </Link></div>
           <div><Link href="/industry/status">Status</Link></div>
           <div><Link href="/industry/security">Segurança</Link></div>
-          <div>Menu 1</div>
+          <div><Link href="/industry/settings">Configurações</Link></div>
         </div>
         <div className={styles.datetime}>
        {date} {time}
