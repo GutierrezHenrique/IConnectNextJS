@@ -156,7 +156,7 @@ export default function MachineComponents() {
                                                         <YAxis />
                                                         <Tooltip />
                                                         <Legend />
-                                                        <Line type="monotone" dataKey="celsius" label="TEMPERATURA" stroke="#fa0505" />
+                                                        <Line type="monotone" dataKey="celsius" stroke="#fa0505" />
                                                         <ReferenceLine y={mediumRPM} label="MEDIA" stroke="blue" />
                                                     </LineChart>
                                                 </ResponsiveContainer>
@@ -184,7 +184,7 @@ export default function MachineComponents() {
                                                         <YAxis />
                                                         <Tooltip />
                                                         <Legend />
-                                                        <Line type="monotone" dataKey="level" label="TEMPERATURA" stroke="#fa0505" />
+                                                        <Line type="monotone" dataKey="level" stroke="#fa0505" />
                                                     </LineChart>
                                                 </ResponsiveContainer>
                                             </div> : null}
@@ -212,7 +212,7 @@ export default function MachineComponents() {
                                                         <YAxis />
                                                         <Tooltip />
                                                         <Legend />
-                                                        <Line type="monotone" dataKey="hz" label="TEMPERATURA" stroke="#fa0505" />
+                                                        <Line type="monotone" dataKey="hz" stroke="#fa0505" />
                                                     </LineChart>
                                                 </ResponsiveContainer>
                                             </div> : null}
