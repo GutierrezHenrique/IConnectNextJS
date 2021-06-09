@@ -63,7 +63,7 @@ export default function MachineComponents() {
 
                     {
                         listMachine.map(({ _id, name, tempNow, speedNow, mediumRPM, speed, temp, reservoirlevelNow, resorvoirMedium, img,
-                        mixer, mixerNow
+                        mixer, mixerNow, balance, balanceNow
                         }) => {
                             if (!openMachine || openMachine === _id) {
 
@@ -79,6 +79,7 @@ export default function MachineComponents() {
                                                 {mediumRPM ? <div className={styles.rpm}>MÉDIA: {mediumRPM ? `${mediumRPM.toFixed(2)}` : null}RPM</div> : null}
                                                 {reservoirlevelNow ? <div className={styles.rpm}>{reservoirlevelNow}%</div> : null}
                                                 {mixerNow ? <div className={styles.rpm}>{mixerNow}Hz</div> : null}
+                                                {balanceNow ? <div className={styles.rpm}>{balanceNow}Kg</div> : null}
                                             </div>
                                                 {!openMachine ? <button onClick={() => setOpenMachine(_id)}>DETALHES</button> : null}
                                                 {openMachine ? <button onClick={() => setOpenMachine("")}>SAIR</button> : null}
@@ -216,6 +217,34 @@ export default function MachineComponents() {
                                                     </LineChart>
                                                 </ResponsiveContainer>
                                             </div> : null}
+
+
+                                            {openMachine && balance.length > 0 ?
+                                            <div style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
+                                              PESO EM KG
+                                     <ResponsiveContainer width="100%" height="100%">
+                                                    <LineChart
+                                                        width={500}
+                                                        height={300}
+                                                        data={balance}
+                                                        margin={{
+                                                            top: 5,
+                                                            right: 30,
+                                                            left: 20,
+                                                            bottom: 5,
+                                                        }}
+                                                    >
+                                                        <CartesianGrid strokeDasharray="3 3" />
+                                                        <XAxis dataKey="date" tick={false} />
+                                                        <YAxis />
+                                                        <Tooltip />
+                                                        <Legend />
+                                                        <Line type="monotone" dataKey="WEIGHT" stroke="#8f8c8c" />
+                                                    </LineChart>
+                                                </ResponsiveContainer>
+                                            </div> : null}
+
+                                        
                                     </>
                                 )
                             }

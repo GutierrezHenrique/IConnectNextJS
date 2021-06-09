@@ -99,8 +99,8 @@ const classes = useStyles();
           <p>IConnect</p>
         </div>
         <div className={styles.menuHorizontal}>
-          <div> <Link href="/industry/connect">Inicio </Link></div>
-          <div> <Link href="/industry/machines">Maquinas </Link></div>
+          <div><Link href="/industry/connect">Inicio </Link></div>
+          <div><Link href="/industry/machines">Sensores </Link></div>
           <div><Link href="/industry/status">Status</Link></div>
           <div><Link href="/industry/security">Segurança</Link></div>
           <div><Link href="/industry/settings">Configurações</Link></div>
