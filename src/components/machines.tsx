@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import apiMain from '../utils/apimain';
 import React, { PureComponent } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine, AreaChart, Area } from 'recharts';
-import { MenuItem, Select } from '@material-ui/core';
-
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 export default function MachineComponents() {
 
@@ -15,10 +15,10 @@ export default function MachineComponents() {
     const [imageItem, setImageItem] = useState("https://upload.wikimedia.org/wikipedia/commons/1/1a/Rotary_Dryer_-_Allgaier.jpg")
 
 
-    const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-        setSpeedUpdate(event.target.value as number);
-    };
-
+    
+    const handleChange = (event: SelectChangeEvent) => {
+        setSpeedUpdate(Number(event.target.value));
+      };
     const handleImage = (event: React.ChangeEvent<{ value: unknown }>) => {
         setImageItem(event.target.value as string);
     };
@@ -43,7 +43,7 @@ export default function MachineComponents() {
             {!hiddenCreate ? <div className={styles.selectUpdate}>
                 <p>TAXA DE ATUALIZAÇÃO: </p>
                 <Select
-                    value={speedUpdate}
+                    value={String(speedUpdate)}
                     style={{ color: "#fff" }}
                     onChange={handleChange}
                 >
@@ -257,15 +257,6 @@ export default function MachineComponents() {
                         <input type="text" placeholder="Nome da maquina/sensor" /><br /><br />
                         <input type="number" placeholder="Temperatura de alerta" />
                         <input type="number" placeholder="Velocidade de alerta" />
-                        <Select
-                            value={imageItem}
-                            style={{ color: "#000" }}
-                            onChange={handleImage}
-                        >
-                            <MenuItem value="https://upload.wikimedia.org/wikipedia/commons/1/1a/Rotary_Dryer_-_Allgaier.jpg">Secador</MenuItem>
-                            <MenuItem value="https://www.rescuecursos.com/wp-content/uploads/2020/09/carga-abrasiva-e-sal-e1609330503374.jpg">Esteira</MenuItem>
-                            <MenuItem value="https://7brd83qn9we1178e338tvik7-wpengine.netdna-ssl.com/wp-content/uploads/2012/05/BatchOven2-520x416.jpg">Forno</MenuItem>
-                        </Select>
                         <button>Criar nova maquina</button>
                     </form>
                     <img src={imageItem} alt="" width="30%" />

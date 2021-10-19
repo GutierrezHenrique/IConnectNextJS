@@ -1,38 +1,16 @@
 import styles from '../styles/components/navbar.module.css'
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { FiWind } from 'react-icons/fi'
-import Avatar from '@material-ui/core/Avatar';
 import Link from 'next/link'
 import { FormEvent, useEffect, useState } from 'react';
-import apiWeather from '../utils/apiweather';
-import httpToCurl from 'http-to-curl';
 import { getCookie, removeCookie, setCookie } from '../Storage/Storage';
 import { useRouter } from 'next/router';
 import { IoIosWater } from "react-icons/io";
 import { BiMapPin } from "react-icons/bi";
 import apiMain from '../utils/apimain';
 import { useDate } from './date';
-import { createStyles, makeStyles, Theme } from '@material-ui/core';
-import { deepOrange, deepPurple } from '@material-ui/core/colors';
 
-const useStyles = makeStyles((theme: Theme) =>
-createStyles({
-  root: {
-    display: 'flex',
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  },
-  orange: {
-    color: theme.palette.getContrastText(deepOrange[500]),
-    backgroundColor: deepOrange[500],
-  },
-  purple: {
-    color: theme.palette.getContrastText(deepPurple[500]),
-    backgroundColor: deepPurple[500],
-  },
-}),
-);
+
 
 export default function NavBarIndustry() {
 
@@ -48,7 +26,6 @@ export default function NavBarIndustry() {
   const { date, time, wish } = useDate();
   let weatherformat = 0;
 
-const classes = useStyles();
 
   useEffect(() => {
 
@@ -69,19 +46,19 @@ const classes = useStyles();
 
     var token = getCookie('Token')
 
-    if (token) {
-      apiMain.post('/user/valided', {
-        token
-      }).then(response => {
-        if (!response.data.verify)
-          router.push('/')
-      }).catch(e => {
-        removeCookie('Token')
-        router.push('/')
-      })
-    }
-    else
-     router.push('/')
+    // if (token) {
+    //   apiMain.post('/user/valided', {
+    //     token
+    //   }).then(response => {
+    //     if (!response.data.verify)
+    //       router.push('/')
+    //   }).catch(e => {
+    //     removeCookie('Token')
+    //     router.push('/')
+    //   })
+    // }
+    // else
+    //  router.push('/')
   }, [])
 
   async function logout(e: FormEvent) {
@@ -107,9 +84,6 @@ const classes = useStyles();
         </div>
         <div className={styles.datetime}>
        {date} {time}
-        <div className={styles.avatar}>
-          <Avatar className={classes.orange} style={{ width: '3rem', height: '3rem' }}>G</Avatar>
-        </div>
         <p>{wish}</p>
         </div>
       </div>

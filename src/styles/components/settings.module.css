@@ -1,5 +1,4 @@
 .container {
-    background: #fff;
     position: absolute;
     top: 10rem;
     left: 20%;
@@ -28,20 +27,29 @@
 }
 
 .menu div{
-    border: 1px solid rgb(69, 122, 219);
-    padding: .4rem;
-    color: rgb(69, 122, 219);
+    color: #fff;
+    background-color: #4057d6;
+    border-color: #5e72e4;
+    padding: .6rem 1rem;
     font-size: 1.5rem;
     border-radius: .2rem;
     font-family: Roboto Slab;
     font-weight: 300;
     transition: .2s;
+    position: relative;
+    text-transform: none;
+    transition: all .15s ease;
+    letter-spacing: .025em;
+    font-size: .875rem;
+    will-change: transform;
+    font-weight: 400;
 }
 
 
 .menu div:hover{
     background: rgb(56, 103, 190);
     color: #fff;
+    zoom: 1.1;
 }
 
 .container div input{
@@ -50,6 +58,8 @@
     width: 30%;
     font-family: Roboto Slab;
     font-weight: 400;
+    border-radius: .3rem;
+    border: 1px solid rgb(26, 52, 122);
 }
 
 .container div button{
